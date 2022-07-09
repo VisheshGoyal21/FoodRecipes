@@ -15,27 +15,26 @@ export default function Navbar() {
 
   return (
     <nav className="navbar" style={{background: color}}>
-      <ul>
-        <Link to="/" className="brand">
-            <h1>Food Recipes</h1>
-        </Link>
-        
-        
+    <ul>
+      <Link to="/" className="brand">
+          <h1>Food Recipes</h1>
+      </Link>
 
-        {!user && (
-            <><Link to="/login">Login</Link><Link to="/signup">Signup</Link></>
-        )}
-
-        {user && (
+      {!user && (
           <>
-            <li>hello, {user.displayName}</li>
-            {/* <Searchbar /> */}
-            <li><Link to="/create">Create Recipe</Link></li>
-            <li>
-              <button className="btn" onClick={logout}>Logout</button>
-            </li>
+              <Link to="/login" className="btn">Login</Link>
+              <Link to="/signup">Signup</Link>
           </>
-        )}
+      )}
+
+      {user && (
+        <>
+          <h4 style={{margin: 30}}>hello, {user.displayName}</h4>
+          <Searchbar />
+          <Link to="/create"><button>Create Recipe</button></Link>
+          <button onClick={logout}>Logout</button>
+        </>
+      )}
       </ul>
     </nav>
   )
